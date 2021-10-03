@@ -13,6 +13,7 @@ Next we begin preprocessing the data and manipulating it. We perform a couple of
 ### Step 3: Analysis
 The final step of this is to visualize our data as a time series graph that matches a graph given by the instructor.  
 
+## Data
 My final data file has the following schema:  
 Column        | Value
 ------------- | -------------
@@ -25,7 +26,7 @@ pageview_all_views         | num_views (all traffic modern API)
 pageview_desktop_views         | num_views (desktop traffic modern API)
 pageview_mobile_views         | num_views (desktop traffic mobile API)
 
-## Processed Data Notes: 
+##Data Notes: 
 The data to be analyzed expands from 2008 to 2021.  
 
 The following process was used to obtain the final data file:
@@ -41,6 +42,8 @@ Additional Notes:
 - pageview_mobile_views is the sum of mobile_web and mobile_app values from the modern API.
 - Remove the data from 08-2016 from the legacy API as it falls to 0 and messes up the graph
 - The dates of the legacy mobile API and legacy desktop do not match so combine into pagecount_all_views only after merging all dektop and mobile views.
+- Fill NaN values with 0 when creating the csv file but put it back to NaN for the visualization. 
+- Replace pagecount_all_views NaN values with pagecount_desktop_views
 
 ## API
 
@@ -48,8 +51,11 @@ Additional Notes:
 - Pageview API excludes spiders/crawlers
 - Pagecounts API includes spiders/crawlers
 - We filter by user on the modern API.
-- 
+- Code to call API can be found [here](https://public.paws.wmcloud.org/User:Jtmorgan/data512_a1_example.ipynb) and is not mine.
+
 ### License and Terms of Use
 Documentation for the legacy pagecounts API can be found [here](https://wikitech.wikimedia.org/wiki/Analytics/AQS/Legacy_Pagecounts)  
 Documentation for the modern pageview API can be found [here](https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews) 
 The license and terms of use for the API can be found [here](https://www.mediawiki.org/wiki/REST_API#Terms_and_conditions)
+
+#### If there are any questions, feel free to contact me at sampereb@uw.edu
