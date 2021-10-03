@@ -13,12 +13,14 @@ Next we begin preprocessing the data and manipulating it. We perform a couple of
 ### Step 3: Analysis
 The final step of this is to visualize our data as a time series graph that matches a graph given by the instructor.  
 
+(Detailed instructions can be found at the end)
+
 ## Data
 My final data file has the following schema:  
 Column        | Value
 ------------- | -------------
-year          | YYYY
-month         | MM
+year          | YYYY year the data was collected
+month         | MM month the data was collected
 pagecount_all_views         | num_views (all traffic legacy API)
 pagecount_desktop_views         | num_views (desktop traffic legacy API)
 pagecount_mobile_views         | num_views (mobile traffic legacy API)
@@ -45,6 +47,25 @@ Additional Notes
 - The dates of the legacy mobile API and legacy desktop do not match so combine into pagecount_all_views only after merging all dektop and mobile views.
 - Fill NaN values with 0 when creating the csv file use the unfilled data (containing NaN) for the visualization. 
 - Replace pagecount_all_views NaN values with pagecount_desktop_views
+- 
+
+## Detailed Instructions
+- Create endpoints for the legacy and modern API
+- Call legacy API two times ("access-site" = "desktop-site", "mobile-site"). Call modern API three times ("access" = "desktop", "mobile-app", "mobile-web")
+- Update headers to make them your own
+- Use api_call function from [here](https://public.paws.wmcloud.org/User:Jtmorgan/data512_a1_example.ipynb)
+- Call the function 5 times for each different 'access' parameter and write the information to .json files
+- Convert information from API calls to dataframes
+- Combine counts from mobile-web and mobile-app from the modern API into one.
+- Split the timestamps into year/month and remove uneccessary columns
+- Rename columns and delete the ones we do not need (anything that is not year, month, or counts)
+- Merge the 4 dataframes into one and then sum the legacies (mobile + desktop) and modern (mobile + desktop) views for the 2 additional 'all' columns 
+- Fill null values with 0 and output a csv file
+- Using the dataframe before fillin NaN values; replace NaN values in pagecount_all_views with pagecount_desktop_views, ensures that the 'all' data starts from 2008
+- Melt the dataframe along the year and month columns and create 2 new categorical columns. 1st column is (legacy, modern) depending on  which API the data was gathered from. 2nd column is (mobile, desktop, all) depending on which source of traffic the data came from.
+- Remove from legacy API where year is 2016 and month is 08
+- Convert year, month to timestamp data.
+- Graph using matplotlib/seaborn with time on x-axis and value on y-axis
 
 ## API
 
