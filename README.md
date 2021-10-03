@@ -27,13 +27,14 @@ pageview_desktop_views         | num_views (desktop traffic modern API)
 pageview_mobile_views         | num_views (desktop traffic mobile API)
 
 ##Data Notes: 
-The data to be analyzed expands from 2008 to 2021.  
+The data in this project ranges from January 01, 2008 to August 30, 2021 
 
 The following process was used to obtain the final data file:
 - For data collected from the Pageviews API, combine the monthly values for mobile-app and mobile-web to create a total mobile traffic count for each month.
 - For all data, separate the value of timestamp into four-digit year (YYYY) and two-digit month (MM) and discard values for day and hour (DDHH).
+- Replace NaN values with 0 when creating the csv file
 
-Additional Notes:
+Additional Notes
 - pagecount_all_views is the sum of pagecount_desktop_views and pagecount_mobile_views
 - pagecount_desktop_views is from the legacy API
 - pagecount_mobile_views is from the legacy API
@@ -42,7 +43,7 @@ Additional Notes:
 - pageview_mobile_views is the sum of mobile_web and mobile_app values from the modern API.
 - Remove the data from 08-2016 from the legacy API as it falls to 0 and messes up the graph
 - The dates of the legacy mobile API and legacy desktop do not match so combine into pagecount_all_views only after merging all dektop and mobile views.
-- Fill NaN values with 0 when creating the csv file but put it back to NaN for the visualization. 
+- Fill NaN values with 0 when creating the csv file use the unfilled data (containing NaN) for the visualization. 
 - Replace pagecount_all_views NaN values with pagecount_desktop_views
 
 ## API
@@ -50,7 +51,7 @@ Additional Notes:
 ### API Notes
 - Pageview API excludes spiders/crawlers
 - Pagecounts API includes spiders/crawlers
-- We filter by user on the modern API.
+- Filter by user on the modern API.
 - Code to call API can be found [here](https://public.paws.wmcloud.org/User:Jtmorgan/data512_a1_example.ipynb) and is not mine.
 
 ### License and Terms of Use
