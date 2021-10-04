@@ -5,7 +5,7 @@ This project is dedicated as a practice in best-practices and reproducibility of
 This project is broken into a few steps. 
 
 ### Step 1: Data acquisition
-In which we use wikipedia data gaathered from two APIs (a modern and legacy version) to gather traffic data on the english Wikipedia site from January 01, 2008 to the August 30, 2021 in both mobile and desktop formatts. Notice the modern API has mobile traffic in web and app seperately. we also put these data from 5 sources that we acquire into 5 seperate .json files.
+In which we use wikipedia data gathered from two APIs (a modern and legacy version) to gather traffic data on the english Wikipedia site from January 01, 2008 to the August 30, 2021 in both mobile and desktop formats. Notice the modern API has mobile traffic in web and app seperately. we also put these data from 5 sources that we acquire into 5 seperate .json files.
 
 ### Step 2: Data processing
 Next we begin preprocessing the data and manipulating it. We perform a couple of steps here including combining the mobile web traffic and mobile app traffic into one place which we take to be the whole 'mobile' traffic. We manipulate the timestamp variables in our data also to make it easier to graph and use in later steps. We remove uneccessary columns and keep only the ones that interest us (year, month, and counts of traffic among the different methods/APIs). We then create two new columns which represent 'all' traffic from both APIs by combining desktop and mobile traffic counts/views from both APIs seperately which gives us two new columns. After renaming these columns we output it as a csv file. 
@@ -28,7 +28,7 @@ pageview_all_views         | num_views (all traffic modern API)
 pageview_desktop_views         | num_views (desktop traffic modern API)
 pageview_mobile_views         | num_views (desktop traffic mobile API)
 
-##Data Notes: 
+## Data Notes: 
 The data in this project ranges from January 01, 2008 to August 30, 2021 
 
 The following process was used to obtain the final data file:
